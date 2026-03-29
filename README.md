@@ -1,6 +1,13 @@
 # ⚡ GC Context-Aware Browser AI Assistant
 
-A wildly powerful, context-aware AI chatbot that lives inside a floating widget on your browser. It instantly reads whatever webpage you are viewing—giving it perfect, private context about what you're doing—and answers any questions using blazing-fast local RAG combined with the Groq API. 
+A wildly powerful, context-aware AI chatbot that lives inside a floating widget on your browser. It instantly reads whatever webpage you are viewing—giving it perfect, private context about what you're doing—and answers any questions using blazing-fast local RAG combined with the Llama-3 model. 
+
+### 📥 <b>[Download the Extension ZIP Here!](https://github.com/Gauravchy09/gc-browser-ai-backend/releases/download/v1.0.0/GC_Assistant.zip)</b>
+
+<div align="center">
+  <img src="assets/demo1.png" width="48%">
+  <img src="assets/demo2.png" width="48%">
+</div>
 
 ## ✨ Features
 - **In-Page Floating Widget:** A beautiful, dark-mode glassmorphic chatbot (like Intercom) that hovers in the bottom-right corner of any webpage.
