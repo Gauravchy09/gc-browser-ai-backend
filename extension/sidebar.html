@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Page Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="url(#grad1)"/>
+            <defs>
+              <linearGradient id="grad1" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">AI Assistant</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="clearBtn" title="Clear conversation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"></path>
+            <path d="M10 11v6M14 11v6"></path>
+          </svg>
+        </button>
+        <button class="icon-btn" id="refreshBtn" title="Re-index this page">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Page info bar -->
+    <div class="page-info" id="pageInfo">
+      <div class="page-status" id="pageStatus">
+        <span class="status-dot idle" id="statusDot"></span>
+        <span class="status-text" id="statusText">Click to index current page</span>
+      </div>
+      <div class="page-title-bar" id="pageTitleBar">
+        <span class="page-title-text" id="pageTitleText"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== STATUS BANNER ===== -->
+  <div class="status-banner hidden" id="statusBanner">
+    <div class="banner-content">
+      <div class="spinner" id="bannerSpinner"></div>
+      <span id="bannerText">Indexing page...</span>
+    </div>
+  </div>
+
+  <!-- ===== SELECTION NOTICE ===== -->
+  <div class="selection-notice hidden" id="selectionNotice">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
+      <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+    </svg>
+    <span>Answering from <strong>selected text</strong></span>
+  </div>
+
+  <!-- ===== MESSAGES AREA ===== -->
+  <main class="messages-area" id="messagesArea">
+
+    <!-- Welcome state -->
+    <div class="welcome-state" id="welcomeState">
+      <div class="welcome-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="url(#wg1)" stroke-width="1.5"/>
+          <path d="M8 12h8M12 8v8" stroke="url(#wg2)" stroke-width="2" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="wg1" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+            <linearGradient id="wg2" x1="8" y1="8" x2="16" y2="16"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h2 class="welcome-title">Ask Anything About This Page</h2>
+      <p class="welcome-subtitle">I'll read the page, understand its content, and answer your questions instantly.</p>
+
+      <div class="quick-tips">
+        <div class="tip-chip" data-question="What is this page about?">📄 Summarize page</div>
+        <div class="tip-chip" data-question="What are the key points?">🎯 Key points</div>
+        <div class="tip-chip" data-question="Explain the main concepts simply">💡 Explain simply</div>
+      </div>
+
+      <div class="tip-box">
+        <span>💡 Tip: Select text on the page to ask about a specific section.</span>
+      </div>
+    </div>
+
+    <!-- Chat messages will be injected here -->
+    <div class="messages-list" id="messagesList"></div>
+
+  </main>
+
+  <!-- ===== INPUT AREA ===== -->
+  <footer class="input-area">
+    <div class="input-wrapper">
+      <textarea
+        id="questionInput"
+        class="question-input"
+        placeholder="Ask about this page..."
+        rows="1"
+        maxlength="1000"
+      ></textarea>
+      
+      <!-- Microphone Button -->
+      <button class="icon-btn mic-btn" id="micBtn" title="Use voice to ask">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+      </button>
+
+      <button class="send-btn" id="sendBtn" disabled title="Send">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+    <div class="input-footer">
+      <span class="powered-by">Powered by Groq + MiniLM RAG</span>
+      <span class="char-count" id="charCount">0/1000</span>
+    </div>
+  </footer>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>

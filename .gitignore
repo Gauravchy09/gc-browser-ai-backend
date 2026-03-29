@@ -1,0 +1,29 @@
+# Python Backend
+backend/venv*/
+backend/env*/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Security & Secrets
+backend/.env
+.env
+.env.local
+
+# Build Outputs & Compiled Extensions
+GC_Assistant.zip
+*.zip
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

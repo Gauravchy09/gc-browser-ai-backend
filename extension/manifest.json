@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "AI Page Assistant",
+  "version": "1.0",
+  "description": "Chat with any webpage using AI. Context-aware, privacy-first local RAG.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "sidebar.html",
+        "sidebar.js",
+        "styles.css",
+        "options.html",
+        "options.js",
+        "content.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js", "injected-widget.js"],
+      "css": ["injected-widget.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "AI Page Assistant"
+  }
+}
