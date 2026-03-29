@@ -5,8 +5,8 @@ A wildly powerful, context-aware AI chatbot that lives inside a floating widget 
 ### 📥 <b>[Download the Extension ZIP Here!](https://github.com/Gauravchy09/gc-browser-ai-backend/releases/download/v1.0.0/GC_Assistant.zip)</b>
 
 <div align="center">
-  <img src="assets/demo1.png" width="48%">
-  <img src="assets/demo2.png" width="48%">
+  <img src="demo1.png" width="48%">
+  <img src="demo2.png" width="48%">
 </div>
 
 ## ✨ Features
