@@ -7,9 +7,9 @@ A wildly powerful, context-aware AI chatbot that lives inside a floating widget 
 <br>
 
 <div align="center">
-  <img src="assets/demo1.png" width="100%" style="border-radius: 8px; margin-bottom: 20px;" alt="Browser View">
+  <img src="demo1.png" width="100%" style="border-radius: 8px; margin-bottom: 20px;" alt="Browser View">
   <br>
-  <img src="assets/demo2.png" width="350px" style="border-radius: 8px;" alt="Chat Widget">
+  <img src="demo2.png" width="350px" style="border-radius: 8px;" alt="Chat Widget">
 </div>
 
 ## ✨ Features
